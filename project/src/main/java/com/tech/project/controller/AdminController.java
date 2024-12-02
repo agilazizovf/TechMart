@@ -23,4 +23,9 @@ public class AdminController {
     public ResponseEntity<MessageResponse> registration(@RequestBody @Valid AdminRequest request) {
         return adminService.register(request);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody @Valid LoginRequest request) {
+        return adminService.login(request);
+    }
 }
