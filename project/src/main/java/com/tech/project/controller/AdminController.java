@@ -2,7 +2,6 @@ package com.tech.project.controller;
 
 import com.tech.project.request.AdminRequest;
 import com.tech.project.request.LoginRequest;
-import com.tech.project.response.JwtAuthenticationResponse;
 import com.tech.project.response.MessageResponse;
 import com.tech.project.service.AdminService;
 import jakarta.validation.Valid;
@@ -23,10 +22,5 @@ public class AdminController {
     @PostMapping("/register")
     public ResponseEntity<MessageResponse> registration(@RequestBody @Valid AdminRequest request) {
         return adminService.register(request);
-    }
-
-    @PostMapping("/login")
-    public JwtAuthenticationResponse login(@RequestBody @Valid LoginRequest request) {
-        return adminService.login(request);
     }
 }
