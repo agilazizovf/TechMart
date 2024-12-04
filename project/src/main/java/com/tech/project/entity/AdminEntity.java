@@ -1,11 +1,13 @@
 package com.tech.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "admins")
@@ -30,4 +32,8 @@ public class AdminEntity {
     @OneToOne
     @JoinColumn(name = "user_id", unique = true)
     private UserEntity user;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "admin")
+    private List<CategoryEntity> category;
 }
