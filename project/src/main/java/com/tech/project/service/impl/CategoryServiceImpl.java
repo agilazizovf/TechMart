@@ -115,7 +115,7 @@ public class CategoryServiceImpl implements CategoryService {
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
         if(!category.getAdmin().getUser().equals(user)) {
-            throw new IllegalAccessException("You do not have permission to update this category");
+            throw new IllegalAccessException("You do not have permission to delete this category");
         }
 
         categoryRepository.deleteById(categoryId);

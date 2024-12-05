@@ -23,12 +23,16 @@ public class UserEntity {
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
     @JsonIgnore
     @OneToOne(mappedBy = "user")
     private AdminEntity admin;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<ProductEntity> products;
 
     @JsonIgnore
     @ManyToMany

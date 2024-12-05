@@ -1,20 +1,18 @@
 package com.tech.project.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "products")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryEntity {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +22,16 @@ public class CategoryEntity {
 
     private String description;
 
+    private double price;
+
     private LocalDateTime registerDate;
     private LocalDateTime updateDate;
 
     @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private AdminEntity admin;
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    private List<ProductEntity> products;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
 }
